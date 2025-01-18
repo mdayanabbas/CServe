@@ -38,7 +38,7 @@ Before running the server, ensure you have the following installed:
 1. Clone the repository to your local machine:
     ```bash
     git clone https://github.com/mdayanabbas/CServe.git
-    cd webdev-server
+    cd CServe
     ```
 
 2. Compile the code:
@@ -65,4 +65,52 @@ Once the server is up and running, you can:
   
 To stop the server, press `Ctrl+C`.
 
+## Features and Functions
 
+### Static File Serving
+The server supports serving static files (HTML, CSS, JS, images) from the `public` directory. It determines the MIME type based on the file extension and serves it accordingly.
+
+### Advanced Content Handling
+The server handles several advanced features that could be extended:
+
+- **Project Showcase**: Showcases a list of featured projects.
+- **Event Listings**: Displays upcoming events in the community or platform.
+- **Recommendations**: Sends project recommendations, which could be extended to integrate with recommendation algorithms.
+
+### HTTP Request Handling
+
+- **GET**: The server can handle `GET` requests and respond with static content or dynamic pages.
+- **POST**: POST requests are currently not implemented for advanced features, but the server can be extended to accept form submissions.
+
+### Thread Handling
+The server handles incoming connections concurrently using threads (`CreateThread`), ensuring that multiple clients can interact with the server at the same time.
+
+### Log Requests
+Every incoming request is logged with details about the method (`GET`, `POST`) and the requested path.
+
+### HTTP Status Codes
+- **200 OK**: Successfully served content.
+- **404 Not Found**: File or route not found.
+- **405 Method Not Allowed**: Unsupported HTTP method.
+
+## Future Improvements
+While this project serves as a basic web server, there are several opportunities for enhancement:
+
+- **Database Integration**: Store projects, events, and recommendations in a database (e.g., MySQL, SQLite).
+- **User Authentication**: Allow users to create accounts, log in, and interact with the server.
+- **Dynamic Content**: Implement POST requests for user submissions and dynamic content.
+- **Security Improvements**: Add HTTPS support and sanitize inputs to prevent injection attacks.
+- **Advanced Routing**: Add more dynamic routes, such as API endpoints for real-time data.
+
+## Contributing
+If you'd like to contribute to this project, feel free to fork the repository, make changes, and submit a pull request. Contributions are always welcome!
+
+### How to Contribute
+1. Fork the repository.
+2. Create a new branch for your changes (`git checkout -b feature-name`).
+3. Make your changes and commit them (`git commit -am 'Add new feature'`).
+4. Push to the branch (`git push origin feature-name`).
+5. Open a pull request.
+
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
