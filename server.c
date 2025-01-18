@@ -6,10 +6,10 @@
 
 #define SERVER_PORT 8080
 #define MAX_REQUEST_SIZE 1024
-#define MAX_FILE_SIZE 1024 * 1024 // 1 MB for file size
-#define STATIC_DIR "public" // Directory containing static files
+#define MAX_FILE_SIZE 1024 * 1024 
+#define STATIC_DIR "public" 
 
-// Define structures for advanced features
+
 typedef struct {
     char name[100];
     int endorsements;
@@ -27,7 +27,7 @@ typedef struct {
     char link[500];
 } Project;
 
-// Define HTTP request handling structures
+
 typedef struct {
     SOCKET client_socket;
     const char* static_dir;
@@ -45,12 +45,11 @@ typedef struct {
     char body[MAX_REQUEST_SIZE];
 } HttpRequest;
 
-// Function to log requests
+
 void log_request(const char* method, const char* path) {
     printf("Request received: %s %s\n", method, path);
 }
 
-// Function to get MIME type for serving static files
 char* get_mime_type(const char* file_path) {
     if (strstr(file_path, ".html")) return "text/html";
     if (strstr(file_path, ".css")) return "text/css";
@@ -111,31 +110,29 @@ void serve_static_file(const char* file_path, char* response) {
     free(content);
 }
 
+//working on ADV               you remember
 // Handler function for advanced features like recommendation, showcase, etc.
 void handle_advanced_features(const char* path, char* response) {
     if (strcmp(path, "/recommendations") == 0) {
-        // Example: Send recommendation system response
         sprintf(response, "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\n\r\n"
                           "<html><body><h1>Recommended Projects</h1><ul><li>Project 1</li><li>Project 2</li></ul></body></html>");
     }
     else if (strcmp(path, "/showcase") == 0) {
-        // Example: Project showcase
         sprintf(response, "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\n\r\n"
                           "<html><body><h1>Project Showcase</h1><ul><li>Project A</li><li>Project B</li></ul></body></html>");
     }
     else if (strcmp(path, "/events") == 0) {
-        // Example: Event integration
         sprintf(response, "HTTP/1.1 200 OK\r\nContent-Type: text/html\r\nConnection: close\r\n\r\n"
                           "<html><body><h1>Upcoming Events</h1><ul><li>Hackathon 2023</li><li>Workshop on ML</li></ul></body></html>");
     }
     else {
-        // If no match, serve a 404
+
         sprintf(response, "HTTP/1.1 404 Not Found\r\nContent-Type: text/html\r\nConnection: close\r\n\r\n"
                           "<html><body><h1>404 - Not Found</h1></body></html>");
     }
 }
 
-// Function to handle client connections
+
 DWORD WINAPI handle_connection_thread(LPVOID arg) {
     Server* server = (Server*)arg;
     SOCKET client_socket = server->client_socket;
@@ -150,13 +147,11 @@ DWORD WINAPI handle_connection_thread(LPVOID arg) {
 
     request[bytes_received] = '\0';
 
-    // Log request
     HttpRequest http_request;
     parse_request(request, &http_request);
     log_request(http_request.method == GET ? "GET" : "POST", http_request.path);
 
     if (http_request.method == GET) {
-        // Serve advanced features
         handle_advanced_features(http_request.path, response);
     } else {
         sprintf(response,
