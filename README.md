@@ -62,6 +62,10 @@ Before running the server, ensure you have the following installed:
   ```bash
   curl http://localhost:8080/events
 
+  curl http://localhost:8080/recommendations
+
+  curl http://localhost:8080/showcase
+
 
 ## Usage
 
