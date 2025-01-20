@@ -52,9 +52,16 @@ Before running the server, ensure you have the following installed:
     ```
 
 4. Open a browser and visit `http://localhost:8080` to interact with the server.
-or you can also do these too :
-          `http://localhost:8080/index.html`    You will see a web page hosted via your web server
-          `http://localhost:8080/asdfgh`    You can see a 404 error because such files doesnt exist on your web server 
+   You can also try the following:
+   - `http://localhost:8080/index.html`: This will display the web page hosted on your server.
+   - `http://localhost:8080/asdfgh`: This will return a 404 error as such a file does not exist on your server.
+
+5. You can also interact with the server using the command prompt by running the following commands:
+
+- **Using curl:**
+  ```bash
+  curl http://localhost:8080/events
+
 
 ## Usage
 
